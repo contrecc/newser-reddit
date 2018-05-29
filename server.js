@@ -30,6 +30,11 @@ app.use(bodyParser.json());
 
 app.get('/reddit/:category', async function(req, res) {
   try {
+    // console.log("CATEGORY CATEGORY CATEGORY CATEGORY", req.params.category);
+    // console.log("===================================");
+    // console.log("===================================");
+    // console.log("===================================");
+
     const responseData = await fetch(
       `https://www.reddit.com/${req.params.category}/.json?raw_json=1`
     );
@@ -47,6 +52,8 @@ app.get('/reddit/:category', async function(req, res) {
         image: data.data.preview ? data.data.preview.images[0].source.url : 'https://cdn.comparitech.com/wp-content/uploads/2017/08/reddit-1.jpg'
       };
     });
+
+    // console.log("The mapped over data is ", mappedData);
 
     res.send(mappedData);
   } catch (error) {

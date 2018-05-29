@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 // import FetchSearch from './components/FetchSearch';
 // import FetchNew from './components/FetchNew';
 import NavBar from './components/NavBar';
-import { ButtonGroup, Button, Col, Card, CardImg, CardTitle } from 'reactstrap';
+import { ButtonGroup, Button, Col, Card, CardImg, CardTitle, Row, Navbar, NavbarBrand, NavBarToggler, Collapse, Nav, NavItem, NavLink, NavbarToggler } from 'reactstrap';
 import './App.css';
 
 class App extends Component {
@@ -13,28 +13,30 @@ class App extends Component {
     super();
     this.state = {
       data: []
-    }
-    this.handlefetchCategory = this.handlefetchCategory.bind(this);
-    this.fetchCategory = this.fetchCategory.bind(this);   
+    };
+    this.handleFetchCategory = this.handleFetchCategory.bind(this);
+    this.fetchCategory = this.fetchCategory.bind(this);
   }
 
   fetchCategory(category) {
     return fetch(`/reddit/${category}`)
       .then(res => res.json())
-      .then(data => this.setState({ data }))
+      .then(data => this.setState({ data: data }))
       .catch(err => console.log(err));
   }
 
-  handlefetchCategory(e) {
+  handleFetchCategory(e) {
     e.preventDefault();
-    let category = e.target.value;
+    let category = e.target.getAttribute('data-value');
+    // console.log("The category is", category);
+    // console.log("The even target is", e.target);
 
     this.fetchCategory(category);
   }
 
-  componentDidMount() {
-    this.fetchCategory("best");
-  }
+  // componentDidMount() {
+  //   this.fetchCategory('best');
+  // }
 
   render() {
     const { data } = this.state;
@@ -66,16 +68,60 @@ class App extends Component {
 
     return (
       <div className="App">
-        <NavBar />
-        <ButtonGroup>
-          <Button value="best" onClick={this.handlefetchCategory}>BEST</Button>
-          <Button value="hot" onClick={this.handlefetchCategory}>HOT</Button>
-          <Button value="new" onClick={this.handlefetchCategory}>NEW</Button>
-          <Button value="rising" onClick={this.handlefetchCategory}>RISING</Button>
-          <Button value="controversial" onClick={this.handlefetchCategory}>CONTROVERSIAL</Button>
-          <Button value="top" onClick={this.fetchCategory}>TOP</Button>
-        </ButtonGroup>
-        {dataCards}
+      {/* <div className="navbar-div">
+        <Navbar expand="md">
+          <NavbarBrand href="/" style={{textcolor: "#fff", textDecoration: "none"}}>newser-reddit</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="nav-fill w-100" navbar>
+              <NavItem>
+                <NavLink data-value="best" onClick={this.handleFetchCategory} >BEST</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink data-value="hot" onClick={this.handleFetchCategory} >HOT</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink data-value="new" onClick={this.handleFetchCategory} >NEW</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink data-value="rising" onClick={this.handleFetchCategory} >RISING</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink data-value="controversial" onClick={this.handleFetchCategory}>CONTROVERSIAL</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink data-value="top" onClick={this.handleFetchCategory}>TOP</NavLink>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div> */}
+        <NavBar handleFetch={this.handleFetchCategory} />
+        {/* <ButtonGroup>
+          <Button value="best" onClick={this.handleFetchCategory}>
+            BEST
+          </Button>
+          <Button value="hot" onClick={this.handleFetchCategory}>
+            HOT
+          </Button>
+          <Button value="new" onClick={this.handleFetchCategory}>
+            NEW
+          </Button>
+          <Button value="rising" onClick={this.handleFetchCategory}>
+            RISING
+          </Button>
+          <Button value="controversial" onClick={this.handleFetchCategory}>
+            CONTROVERSIAL
+          </Button>
+          <Button value="top" onClick={this.fetchCategory}>
+            TOP
+          </Button>
+        </ButtonGroup> */}
+        <div className="container">
+        <Row style={{ paddingLeft: '10px', paddingRight: '10px', paddingTop: '160px' }}>
+          {dataCards}
+        </Row>
+        </div>
         {/* <FetchAuthentication />
         <FetchHot />
         <FetchRising />

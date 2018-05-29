@@ -23,8 +23,12 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 img:hover {
@@ -42,6 +46,78 @@ img:hover {
   position: absolute;
   text-align: center;
   bottom: 0;
-  left: .5em;
+  left: 0.5em;
   color: #fff;
+}
+
+a.navbar-brand,
+a.navbar-brand:hover {
+  text-decoration: none;
+  color: #fff;
+}
+
+a.nav-link {
+  color: #fff;
+}
+
+a.nav-link:hover {
+  cursor: pointer;
+}
+
+ul.navbar-nav {
+  /* text-align: justify; */
+  /* min-width: 500px; */
+  color: #fff;
+}
+
+/* ul.navbar-nav:after, ul.navbar-nav:before {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  /* margin: 0 auto; */
+
+/* li.nav-item {
+  display: inline-block;
+} */
+
+li.nav-item:hover {
+  background-color: #ebeaea;
+  color: #000;
+}
+
+nav.navbar {
+  background-color: #343a40;
+  padding: 0 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  height: 56px;
+  z-index: 1;
+}
+
+.navbar-div {
+  margin-bottom: 20px;
+}
+
+.navbar-collapse {
+  background-color: #343a40;
+}
+
+.navbar-toggler-icon {
+  color: #fff;
+}
+
+.navbar-toggler .icon-bar {
+  color: #fff;
+}
+
+.light-icons {
+  color: #fff;
+}
+
+div.icons {
+  width: 35px;
+  height: 4px;
+  background-color: #fff;
+  margin: 6px 0;
 }
