@@ -43,18 +43,18 @@ class App extends Component {
 
     const dataCards = data.map(function(item) {
       return (
-        <Col xs="12" sm="6" md="4" lg="3" key={item.permalink}>
+        <Col xs="12" sm="6" md="4" lg="3" key={item.permalink} className="mx-auto text-center" >
           <div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <a
               href={item.permalink}
               style={{ color: 'inherit', textDecoration: 'none' }}
               target="_blank"
             >
-              <Card style={{ marginBottom: '10px', maxWidth: '240px' }}>
+              <Card style={{ marginBottom: '10px', width: '240px', height: '160px' }}>
                 <CardImg
                   //top
                   //width="100%"
-                  style={{ width: '100%' }}
+                  style={{ width: '100%', height: '100%', overflow: 'hidden' }}
                   src={item.image}
                   alt="Image of New Subreddit Post"
                 />
@@ -117,8 +117,8 @@ class App extends Component {
             TOP
           </Button>
         </ButtonGroup> */}
-        <div className="container">
-        <Row style={{ paddingTop: '160px' }}>
+        <div className="container h-100">
+        <Row style={{ paddingTop: '160px' }} className="h-100 justify-content-center align-items-center" >
           {dataCards}
         </Row>
         </div>
