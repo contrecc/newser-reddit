@@ -43,18 +43,18 @@ class App extends Component {
 
     const dataCards = data.map(function(item) {
       return (
-        <Col key={item.permalink}>
+        <Col xs="12" sm="6" md="4" lg="3" key={item.permalink}>
           <div style={{ paddingTop: '10px', paddingBottom: '10px' }}>
             <a
               href={item.permalink}
               style={{ color: 'inherit', textDecoration: 'none' }}
               target="_blank"
             >
-              <Card style={{ marginBottom: '10px', width: '320.5px' }}>
+              <Card style={{ marginBottom: '10px', maxWidth: '240px' }}>
                 <CardImg
                   //top
                   //width="100%"
-                  style={{ maxWidth: '100%', overflow: 'hidden' }}
+                  style={{ width: '100%' }}
                   src={item.image}
                   alt="Image of New Subreddit Post"
                 />
@@ -118,7 +118,7 @@ class App extends Component {
           </Button>
         </ButtonGroup> */}
         <div className="container">
-        <Row style={{ paddingLeft: '10px', paddingRight: '10px', paddingTop: '160px' }}>
+        <Row style={{ paddingTop: '160px' }}>
           {dataCards}
         </Row>
         </div>

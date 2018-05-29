@@ -46,10 +46,6 @@ export default class NavBar extends React.Component {
             <div className="icons" />
             <div className="icons" />
             <div className="icons" />
-            
-            {/* <span class="icon-bar">L</span>
-            <span class="icon-bar">L</span>
-            <span class="icon-bar">L</span> */}
             </NavbarToggler>
           <Collapse isOpen={this.state.collapsed} navbar>
             <Nav className="nav-fill w-100" navbar>

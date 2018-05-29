@@ -53,9 +53,11 @@ app.get('/reddit/:category', async function(req, res) {
       };
     });
 
+    const slicedData = mappedData.slice(0, 16);
+
     // console.log("The mapped over data is ", mappedData);
 
-    res.send(mappedData);
+    res.send(slicedData);
   } catch (error) {
     console.log(`ERROR FETCHING ${req.params.category} STORIES`, error);
   }
