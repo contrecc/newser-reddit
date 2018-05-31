@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Card, CardImg, CardTitle, Row, CardBody } from 'reactstrap';
+import { Col, Card, CardImg, Row, CardBody } from 'reactstrap';
 
 export default props => {
   const { data } = props;

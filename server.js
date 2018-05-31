@@ -16,11 +16,7 @@ app.get('/reddit/:category', async function(req, res) {
     );
 
     const jsonData = await responseData.json();
-
     const afterValue = jsonData.data.after;
-
-    
-
     const filteredData = jsonData.data.children.filter(function(item) {
       return item.data.preview && item.data.preview.images;
     });
@@ -39,7 +35,6 @@ app.get('/reddit/:category', async function(req, res) {
     });
 
     const slicedData = mappedData.slice(0, 16);
-
     res.send({ slicedData, afterValue });
   } catch (error) {
     console.log(`ERROR FETCHING ${req.params.category} STORIES`, error);
@@ -47,8 +42,6 @@ app.get('/reddit/:category', async function(req, res) {
 });
 
 app.get('/reddit/:category/:count/:after', async function(req, res) {
-  console.log(req.params);
-
   try {
     const responseData = await fetch(
       `https://www.reddit.com/${req.params.category}/.json?raw_json=1/?count=${
@@ -57,11 +50,7 @@ app.get('/reddit/:category/:count/:after', async function(req, res) {
     );
 
     const jsonData = await responseData.json();
-
     const afterValue = jsonData.data.after;
-
-    console.log(afterValue);
-
     const filteredData = jsonData.data.children.filter(function(item) {
       return item.data.preview && item.data.preview.images;
     });
@@ -80,12 +69,12 @@ app.get('/reddit/:category/:count/:after', async function(req, res) {
     });
 
     const slicedData = mappedData.slice(0, 16);
-
     res.send({ slicedData, afterValue });
   } catch (error) {
     console.log(`ERROR FETCHING MORE ${req.params.category} STORIES`, error);
   }
 });
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, function() {
