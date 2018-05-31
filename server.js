@@ -1,13 +1,7 @@
-require('dotenv').config();
-
 const express = require('express');
 const fetch = require('node-fetch');
-const bodyParser = require('body-parser');
+const path = require('path');
 const app = express();
-
-// Body parser middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 app.get('/reddit/:category', async function(req, res) {
   try {
@@ -74,6 +68,14 @@ app.get('/reddit/:category/:count/:after', async function(req, res) {
     console.log(`ERROR FETCHING MORE ${req.params.category} STORIES`, error);
   }
 });
+
+if(process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 

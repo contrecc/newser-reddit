@@ -2,18 +2,20 @@
   "name": "newser-reddit",
   "version": "1.0.0",
   "description": "A Newser clone using Reddit subreddits for the stories",
+  "engines": {
+    "node": "9.4.0"
+  },
   "main": "server.js",
   "scripts": {
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "npm install --prefix client && npm run build --prefix client"
   },
   "author": "Colin Contreary",
   "license": "MIT",
   "dependencies": {
-    "body-parser": "^1.18.3",
     "concurrently": "^3.5.1",
-    "dotenv": "^5.0.1",
     "express": "^4.16.3",
     "node-fetch": "^2.1.2"
   },
