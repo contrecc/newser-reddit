@@ -2,52 +2,19 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.hover-border {
+  margin: 0 auto;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-img:hover {
+.hover-border:hover {
   text-decoration: underline;
-  border: 3px solid #5bc0de;
+  border: 5px solid #5bc0de;
 }
 
 .card-img-top {
   position: relative;
   top: 0;
   left: 0;
-}
-
-.text-overlay {
-  position: absolute;
-  text-align: center;
-  bottom: 0;
-  left: 0.5em;
-  color: #fff;
 }
 
 a.navbar-brand,
@@ -65,20 +32,8 @@ a.nav-link:hover {
 }
 
 ul.navbar-nav {
-  /* text-align: justify; */
-  /* min-width: 500px; */
   color: #fff;
 }
-
-/* ul.navbar-nav:after, ul.navbar-nav:before {
-  content: '';
-  display: inline-block;
-  width: 100%;
-  /* margin: 0 auto; */
-
-/* li.nav-item {
-  display: inline-block;
-} */
 
 li.nav-item:hover {
   background-color: #ebeaea;
@@ -120,4 +75,18 @@ div.icons {
   height: 4px;
   background-color: #fff;
   margin: 6px 0;
+}
+
+a span:hover {
+  text-decoration: underline;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+.card-body {
+  padding: 0 !important;
+  font-weight: bold;
+  color: #343a40;
 }

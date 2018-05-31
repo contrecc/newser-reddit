@@ -6,8 +6,8 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
- } from 'reactstrap';
+  NavLink
+} from 'reactstrap';
 
 export default class NavBar extends React.Component {
   // constructor(props) {
@@ -41,31 +41,51 @@ export default class NavBar extends React.Component {
     return (
       <div className="navbar-div">
         <Navbar expand="md">
-          <NavbarBrand href="/" style={{textcolor: "#fff", textDecoration: "none"}}>newser for reddit</NavbarBrand>
+          <NavbarBrand
+            href="/"
+            style={{ textcolor: '#fff', textDecoration: 'none' }}
+          >
+            newser for <span style={{ color: '#FF4501' }}>reddit</span>
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggleNavbar} className="light-icons">
             <div className="icons" />
             <div className="icons" />
             <div className="icons" />
-            </NavbarToggler>
+          </NavbarToggler>
           <Collapse isOpen={this.state.collapsed} navbar>
             <Nav className="nav-fill w-100" navbar>
               <NavItem>
-                <NavLink data-value="best" onClick={this.props.handleFetch}>BEST</NavLink>
+                <NavLink data-value="best" onClick={this.props.handleFetch}>
+                  BEST
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink data-value="hot" onClick={this.props.handleFetch} >HOT</NavLink>
+                <NavLink data-value="hot" onClick={this.props.handleFetch}>
+                  HOT
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink data-value="new" onClick={this.props.handleFetch} >NEW</NavLink>
+                <NavLink data-value="new" onClick={this.props.handleFetch}>
+                  NEW
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink data-value="rising" onClick={this.props.handleFetch} >RISING</NavLink>
+                <NavLink data-value="rising" onClick={this.props.handleFetch}>
+                  RISING
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink data-value="controversial" onClick={this.props.handleFetch}>CONTROVERSIAL</NavLink>
+                <NavLink
+                  data-value="controversial"
+                  onClick={this.props.handleFetch}
+                >
+                  CONTROVERSIAL
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink data-value="top" onClick={this.props.handleFetch}>TOP</NavLink>
+                <NavLink data-value="top" onClick={this.props.handleFetch}>
+                  TOP
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>
