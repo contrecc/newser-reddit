@@ -15,11 +15,11 @@
   "author": "Colin Contreary",
   "license": "MIT",
   "dependencies": {
-    "concurrently": "^3.5.1",
-    "express": "^4.16.3",
-    "node-fetch": "^2.1.2"
+    "concurrently": "^4.1.2",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.19.2"
   }
 }
