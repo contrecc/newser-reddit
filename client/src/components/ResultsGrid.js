@@ -1,5 +1,5 @@
-import React from 'react';
-import { Col, Card, CardImg, Row, CardBody } from 'reactstrap';
+import React from "react";
+import { Col, Card, CardImg, Row, CardBody } from "reactstrap";
 
 export default props => {
   const { data } = props;
@@ -12,23 +12,24 @@ export default props => {
         md="4"
         lg="3"
         key={item.permalink}
-        style={{ marginBottom: '10px', marginTop: '10px' }}
+        style={{ marginBottom: "10px", marginTop: "10px" }}
       >
         <a
           href={item.permalink}
-          style={{ color: 'inherit', textDecoration: 'none' }}
+          style={{ color: "inherit", textDecoration: "none" }}
           target="_blank"
+          rel="noopener noreferrer"
         >
           <Card
             style={{
-              width: '240px',
-              height: '160px'
+              width: "240px",
+              height: "160px"
             }}
             className="hover-border"
           >
             <CardImg
-              style={{ width: '100%', height: '100%', overflow: 'hidden' }}
-              src={item.image}
+              style={{ width: "100%", height: "100%", overflow: "hidden" }}
+              src={item.image.replace(/&amp;/g, "&")}
               alt="Image of New Subreddit Post"
             />
             <CardBody>{item.title}</CardBody>
@@ -39,7 +40,7 @@ export default props => {
   });
 
   return (
-    <Row style={{ paddingTop: '20px' }} className="h-100">
+    <Row style={{ paddingTop: "20px" }} className="h-100">
       {dataCards}
     </Row>
   );
