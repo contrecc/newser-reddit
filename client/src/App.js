@@ -1,62 +1,64 @@
-import React, { Component } from 'react';
-import NavBar from './components/NavBar';
-import ResultsGrid from './components/ResultsGrid';
-import InfoSection from './components/InfoSection';
-import { Button } from 'reactstrap';
-import './App.css';
+import React, { Component } from "react";
+import NavBar from "./components/NavBar";
+import ResultsGrid from "./components/ResultsGrid";
+import InfoSection from "./components/InfoSection";
+import { Button } from "reactstrap";
+import "./App.css";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
       data: [],
-      category: 'best',
+      category: "best",
       count: 0,
-      after: ''
+      after: ""
     };
     this.handleFetchCategory = this.handleFetchCategory.bind(this);
     this.fetchCategory = this.fetchCategory.bind(this);
     this.fetchAdditionalPosts = this.fetchAdditionalPosts.bind(this);
   }
 
-  fetchCategory(category) {
-    return fetch(`/reddit/${category}`)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          data: data.slicedData,
-          category: category,
-          count: 25,
-          after: data.afterValue
-        })
-      )
-      .catch(err => console.log(err));
+  async fetchCategory(category) {
+    try {
+      const res = await fetch(`/reddit/${category}`);
+      const data = await res.json();
+      return this.setState({
+        data: data.slicedData,
+        category: category,
+        count: 25,
+        after: data.afterValue
+      });
+    } catch (err) {
+      return console.log(err);
+    }
   }
 
-  fetchAdditionalPosts() {
+  async fetchAdditionalPosts() {
     const { category, count, after } = this.state;
 
-    return fetch(`/reddit/${category}/${count}/${after}`)
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          data: [...this.state.data, ...data.slicedData],
-          category: category,
-          count: count + 25,
-          after: data.afterValue
-        })
-      )
-      .catch(err => console.log(err));
+    try {
+      const res = await fetch(`/reddit/${category}/${count}/${after}`);
+      const data = await res.json();
+      return this.setState({
+        data: [...this.state.data, ...data.slicedData],
+        category: category,
+        count: count + 25,
+        after: data.afterValue
+      });
+    } catch (err) {
+      return console.log(err);
+    }
   }
 
   handleFetchCategory(e) {
     e.preventDefault();
-    let category = e.target.getAttribute('data-value');
+    let category = e.target.getAttribute("data-value");
     this.fetchCategory(category);
   }
 
   componentDidMount() {
-    this.fetchCategory('best');
+    this.fetchCategory("best");
   }
 
   render() {
@@ -69,7 +71,7 @@ class App extends Component {
           <InfoSection category={category} />
           <ResultsGrid data={data} />
           <Button
-            style={{ backgroundColor: '#343a40' }}
+            style={{ backgroundColor: "#343a40" }}
             onClick={this.fetchAdditionalPosts}
             className="btn-lg"
           >
